@@ -13,6 +13,9 @@ router.get('/', function(req, res) {
 // GET localhost:3000/movies/new
 router.get('/new', flightsCtrl.new)
 
+// POST /flights
+router.post('/', flightsCtrl.create)
+
 export {
   router
 }
