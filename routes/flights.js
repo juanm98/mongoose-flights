@@ -5,6 +5,9 @@ const router = Router()
 
 // localhost:3000/movies
 
+// GET /flights
+router.get('/', flightsCtrl.index)
+
 // GET localhost:3000/movies/new
 router.get('/new', flightsCtrl.new)
 
