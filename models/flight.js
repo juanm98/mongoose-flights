@@ -23,7 +23,8 @@ const flightSchema = new Schema({
     type: Date, 
     default: function() {
       return new Date().getFullYear() + 1
-    }
+    },
+    min: 2023,
   }
 }, {
   timestamps: true
