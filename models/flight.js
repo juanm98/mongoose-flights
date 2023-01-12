@@ -23,9 +23,12 @@ const flightSchema = new Schema({
   departs: {
     type: Date, 
     default: function() {
-      return new Date().getFullYear() + 1
+      const today = new Date()
+      const aYearLater = today.getDay() + 1
+      today.setFullYear(aYearLater)
+      return today
+      // return new Date().getFullYear() + 1
     },
-    min: 2023,
     required: true
   }
 }, {
