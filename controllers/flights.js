@@ -93,7 +93,7 @@ function createTicket(req, res) {
     flight.tickets.push(req.body)
     flight.save()
     .then(() => {
-      res.redirect(`flights/${flight._id}`)
+      res.redirect(`/flights/${flight._id}`)
     })
     .catch(err => {
       console.log(err)
@@ -105,8 +105,6 @@ function createTicket(req, res) {
     res.redirect('/')
   })
 }
-
-
 
 export {
   newFlight as new,
