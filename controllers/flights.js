@@ -90,7 +90,7 @@ function update(req, res) {
 function createTicket(req, res) {
   Flight.findById(req.params.id)
   .then(flight => {
-    flight.reviews.push(req.body)
+    flight.tickets.push(req.body)
     flight.save()
     .then(() => {
       res.redirect(`flights/${flight._id}`)
@@ -116,5 +116,5 @@ export {
   deleteFlight as delete,
   edit,
   update,
-  createTicket
+  createTicket,
 }
