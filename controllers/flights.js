@@ -1,4 +1,5 @@
 import { Flight } from "../models/flight.js"
+import { Meal } from "../models/meal.js"
 
 function newFlight(req, res) {
   res.render("flights/new", {
@@ -12,7 +13,8 @@ function create(req, res) {
   }
   Flight.create(req.body)
   .then(flight => {
-    res.redirect('/flights')
+    // res.redirect('/flights')
+    res.redirect(`/flights/${flight._id}`)
   })
   .catch(err => {
     console.log(err)
@@ -36,11 +38,20 @@ function index(req, res) {
 
 function show(req, res) {
   Flight.findById(req.params.id)
+  .populate('meals')
   .then(flight => {
-    res.render('flights/show', { 
-      title: 'Flight Detail', 
-      flight: flight,
-    })    
+    Meal.find({})
+    .then(meals => {
+      res.render('flights/show', { 
+        title: 'Flight Detail', 
+        flight: flight,
+        meals
+      })    
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect("/")
+    })
   })
   .catch(err => {
     console.log(err)
