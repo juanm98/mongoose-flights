@@ -4,6 +4,15 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const mealSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  }
+}, {
+    required: true,
+  })
+
 const ticketSchema = new Schema({
   seat: {
     type: String,
@@ -12,10 +21,10 @@ const ticketSchema = new Schema({
   price: {
     type: Number,
     min: 0,
-}
+  }
 }, {
   timestamps: true,
-})
+  })
 	
 const flightSchema = new Schema({
   airline: {
@@ -44,6 +53,7 @@ const flightSchema = new Schema({
     required: true
   },
   tickets: [ticketSchema]
+
 }, {
   timestamps: true
 })
